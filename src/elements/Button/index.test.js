@@ -1,5 +1,6 @@
 import React from 'react'
 import { render } from '@testing-library/react'
+import { BrowserRouter as Router } from 'react-router-dom'
 import Button from './index'
 
 test("Should not allowed click button if isDisabled is present", () => {
@@ -22,7 +23,10 @@ test("Should render <a> tag", () => {
 })
 
 test("Should render <Link> component", () => {
-    const { container } = render(<Button type='Link'></Button>)
+    const { container } = render(
+        <Router>
+            <Button href="" type='link'></Button>
+        </Router>)
 
     expect(container.querySelector("a")).toBeInTheDocument()
 })
